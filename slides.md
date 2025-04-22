@@ -294,7 +294,8 @@ erDiagram
 # Демонстрация функционала
 
 <video controls style="height: 400px; justify-self: center; align-self: center">
-  <source src="/demo.mp4" type="video/mp4"/>
+
+[//]: # (  <source src="/demo.mp4" type="video/mp4"/>)
 </video>
 
 ---
