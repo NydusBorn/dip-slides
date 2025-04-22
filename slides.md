@@ -33,6 +33,18 @@ layout: cover
 </div>
 
 ---
+layout: center
+---
+
+<QrCodeComponent style="align-self: center; justify-self: center" :dark-mode="useDarkMode().isDark.value"/>
+
+page: https://nydusborn.github.io/dip-slides/
+
+source: https://github.com/NydusBorn/dip-slides
+<script setup lang="ts">
+import { useDarkMode } from '@slidev/client';
+</script>
+---
 
 # Проблемная область
 
@@ -293,7 +305,8 @@ erDiagram
 
 # Демонстрация функционала
 
-<video controls style="height: 400px; justify-self: center; align-self: center">
+[//]: # (TODO try SlidevVideo component)
+<video controls style="height: 400px; justify-self: center; align-self: center"> 
 
 [//]: # (  <source src="/demo.mp4" type="video/mp4"/>)
 </video>

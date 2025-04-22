@@ -12,6 +12,7 @@
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "@slidev/theme-apple-basic": "latest",
-    "vue": "latest"
+    "vue": "latest",
+    "qr-code-styling": "latest"
   }
 }
