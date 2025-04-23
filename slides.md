@@ -476,7 +476,7 @@ useInterval(1000 / 60, {
 # Демонстрация функционала
 
 <SlidevVideo controls style="height: 400px; justify-self: center; align-self: center">
-  <source :src="useDarkMode().isDark.value ? `${window.location.origin}/demo_dark.mp4` : `${window.location.origin}/demo_light.mp4`" type="video/mp4"/>
+  <source :src="useDarkMode().isDark.value ? `/dip-slides/demo_dark.mp4` : `/dip-slides/demo_light.mp4`" type="video/mp4"/>
 </SlidevVideo>
 
 <script setup lang="ts">
