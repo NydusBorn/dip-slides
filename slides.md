@@ -423,6 +423,54 @@ result = model.train(
 ```
 ---
 
+# GUI
+
+Интерфейс для сложной графики использует по кадровое обновление
+
+```ts {*}{class:'!children:text-0.5rem !children:leading-0.15rem'}
+useInterval(1000 / 60, {
+  callback: () => {
+    let elem = document.getElementById("img_element");
+    if (elem != null) {
+      img_elem.value = elem.getBoundingClientRect();
+    }
+    if (current_viewer.value != null) {
+      current_image_data.value = current_viewer.value.imageData;
+      if (!current_viewer.value.ready) {
+        current_viewer.value = null;
+      }
+    }
+    computed_viewer.value = {
+      transform: (() => {
+        if (current_viewer.value != null) {
+          return `scale(${current_image_data.value?.ratio})`;
+        } else return `scale(${img_elem_factor.value ?? 1})`;
+      })(),
+      left: (() => {
+        if (current_viewer.value != null) {
+          return `${current_image_data.value?.left}px`;
+        } else return "";
+      })(),
+      top: (() => {
+        if (current_viewer.value != null) {
+          return `${current_image_data.value?.top}px`;
+        } else return "";
+      })(),
+    };
+  },
+});
+```
+---
+
+# Тестирование
+<br>
+Тестирование введено только на этапе обучения модели, и состоит из проверки изображения на валидационных схемах, с получаемыми метриками, 
+и на тестовых схемах, для которых используется визуальный осмотр.
+
+<img src="/predicted_test.png" style="width: 400px; justify-self: center; object-fit: contain;"/>
+
+---
+
 # Демонстрация функционала
 
 <SlidevVideo controls style="height: 400px; justify-self: center; align-self: center">
