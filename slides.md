@@ -202,6 +202,7 @@ flowchart LR
     F -->|Модель| B
     G --> |Предложения по улучшению процесса| F
 ```
+
 ---
 
 # Архитектура приложения
@@ -216,6 +217,7 @@ flowchart LR
     C -->|Внутренние запросы| E[Label Studio]
     D -.->|Сохранение и извлечение данных| C
 ```
+
 ---
 
 # Структурная схема
@@ -474,7 +476,7 @@ useInterval(1000 / 60, {
 # Демонстрация функционала
 
 <SlidevVideo controls style="height: 400px; justify-self: center; align-self: center">
-  <source :src="useDarkMode().isDark.value ? '/demo_dark.mp4' : '/demo_light.mp4'" type="video/mp4"/>
+  <source :src="useDarkMode().isDark.value ? '/dip-slides/demo_dark.mp4' : '/dip-slides/demo_light.mp4'" type="video/mp4"/>
 </SlidevVideo>
 
 <script setup lang="ts">
