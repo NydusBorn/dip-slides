@@ -1,7 +1,8 @@
 {
   "name": "dip-slides",
   "type": "module",
-  "private": true,
+  "private": false,
+  "homepage": "https://nydusborn.github.io/dip-slides/",
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
@@ -13,6 +14,7 @@
     "@slidev/theme-seriph": "latest",
     "@slidev/theme-apple-basic": "latest",
     "vue": "latest",
-    "qr-code-styling": "latest"
+    "qr-code-styling": "latest",
+    "playwright-chromium": "latest"
   }
 }
