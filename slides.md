@@ -38,7 +38,7 @@ layout: center
 
 <QrCodeComponent style="align-self: center; justify-self: center" :dark-mode="useDarkMode().isDark.value"/>
 
-page: https://nydusborn.github.io/dip-slides/
+page: https://dip-slides.vercel.app/
 
 source: https://github.com/NydusBorn/dip-slides
 <script setup lang="ts">

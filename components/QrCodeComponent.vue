@@ -18,7 +18,7 @@ const qrCode = computed(() => new QRCodeStyling({
   width: 300,
   height: 300,
   type: "svg",
-  data: "https://nydusborn.github.io/dip-slides/",
+  data: "https://dip-slides.vercel.app/",
   qrOptions: {
     errorCorrectionLevel: "H"
   },
