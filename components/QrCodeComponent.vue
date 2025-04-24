@@ -22,7 +22,7 @@ const qrCode = computed(() => new QRCodeStyling({
   qrOptions: {
     errorCorrectionLevel: "H"
   },
-  image: `/dip-slides/own.png`,
+  image: `/own.png`,
   dotsOptions: {
     color: props.darkMode ? "#00a5c0" : "#002e6e",
     type: "extra-rounded"
