@@ -185,22 +185,54 @@ Kubernetes (Позволяет развернуть приложение в кл
 # Функциональная схема
 
 ```mermaid
-flowchart LR
-    A[Схема]
-    B{Распознаватель}
-    C[Заказчик]
-    D[Системы дообучения]
-    E[Label Studio]
-    F[PostgreSQL]
-    G[Системы поиска ошибок]
-    A --> B
-    B --> |Распознанная схема| C
-    B --> |Данные по схеме| E
-    B --> |Данные по схеме| G
-    D -->|Обновленная модель| F
-    E -->|Данные для дообучения| D
-    F -->|Модель| B
-    G --> |Предложения по улучшению процесса| F
+flowchart TD
+ subgraph Frontend["Frontend"]
+        F["Клиентская часть приложения"]
+        F_NAV{"Межстраничные макеты: Навигация и состояние сервиса"}
+        F_PAGES["Страницы: Nuxt маршрутизация"]
+  end
+ subgraph Backend["Backend Сервисы"]
+        B_AUTH{"Сервис аутентификации"}
+        B_DB_API["Надстройка БД (Peewee ORM) - API"]
+        B_LS_SVC["Сервис над Label Studio"]
+        B_REC_SVC["Сервис распознавания схем (YOLO12, YOLO11-cls, EasyOCR)"]
+        B_REP_SVC["Сервис отчетности"]
+        B_TRAIN_SVC["Тренировочный сервис: Модели и Обучение"]
+        B_AUX_BE["Вспомогательный бэкенд (для фронтенда)"]
+  end
+ subgraph Databases["Базы Данных"]
+        DB_MAIN["Основная БД: Артикулы, Свойства, Составляющие"]
+        DB_AUX["Вспомогательная БД: Результаты распознавания и Кластеризации"]
+  end
+ subgraph External_Services["Дополнительные сервисы"]
+        CADDY["Caddy-proxy"]
+        LS["Label Studio"]
+  end
+ subgraph External_Agents["Внешние агенты"]
+        A["Схема"]
+        C["Заказчик"]
+  end
+    F_NAV -- Производные от --> F_PAGES
+    F --> F_NAV
+    B_DB_API -- Запросы данных --> DB_MAIN
+    B_LS_SVC -- Управление --> LS
+    B_REC_SVC -- Данные для обучения/предсказания --> DB_AUX
+    B_REC_SVC -- Модели --> B_TRAIN_SVC
+    B_REP_SVC -- Результаты предсказаний --> DB_AUX
+    B_AUX_BE -- Данные для подключения --> F
+    CADDY -- Проксирование --> F & B_AUTH & B_DB_API & B_LS_SVC & B_REC_SVC & B_REP_SVC & B_TRAIN_SVC & B_AUX_BE & LS
+    F -- Запросы к API --> CADDY
+    B_AUTH -- Аутентификация --> B_DB_API & B_LS_SVC & B_REC_SVC & B_REP_SVC & B_TRAIN_SVC
+    DB_MAIN -- Модели --> B_REC_SVC
+    DB_AUX -- Данные для дообучения --> B_LS_SVC
+    DB_AUX -- Предложения по улучшению процесса --> B_TRAIN_SVC
+    A --> B_REC_SVC
+    B_REC_SVC -- Распознанная схема --> C
+    B_REC_SVC -- Данные по схеме --> B_LS_SVC
+    B_TRAIN_SVC -- Обновленная модель --> DB_MAIN
+    B_LS_SVC -- Данные для дообучения --> B_TRAIN_SVC
+    C -- Прямой доступ к API --> CADDY
+    C -- Взаимодействие через интерфейс --> F_PAGES
 ```
 
 ---
