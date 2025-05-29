@@ -160,17 +160,12 @@ Vue+Nuxt (Nuxt реализует практически все возможны
 
 Label Studio (Одно из лучших средств разметки данных, может быть развернуто локально) и Postgres (Популярная СУБД) в качестве поддерживающих модулей.
 
-Docker (Упрощает развертывание приложения) для локальной развертки и 
-Kubernetes (Позволяет развернуть приложение в кластере, предоставляет сервисы улучшающие работу приложения при 
-развертке на облаках, гибридных системах, и флотах серверов) для системной развертки. 
-Также для упрощения работы с Kubernetes используется OpenTofu (позволяет развернуть систему не разбираясь в локальном кластере).
+Также для упрощенной развертки используется Docker и Docker-Compose.
 
 <img src="/fastapi.png" style="position: absolute; top: 80px; left: 900px; width: 50px;">
 <img src="/nuxt.png" style="position: absolute; top: 150px; left: 10px; width: 30px;">
 <img src="/label.png" style="position: absolute; top: 250px; left: 800px; width: 30px;">
 <img src="/docker.png" style="position: absolute; top: 270px; left: 10px; width: 40px;">
-<img src="/kubernetes.png" style="position: absolute; top: 270px; left: 900px; width: 50px;">
-<img src="/tofu.png" style="position: absolute; top: 400px; left: 500px; width: 80px;">
 
 ---
 
